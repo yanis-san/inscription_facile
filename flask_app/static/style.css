@@ -1,0 +1,452 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Decorative Elements - Japanese style borders */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #c41e3a;
+    z-index: 1000;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 650px;
+}
+
+/* Form Wrapper */
+.form-wrapper {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 50px 40px;
+    animation: slideUp 0.5s ease-out;
+    position: relative;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo Section */
+.logo-section {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    max-width: 280px;
+    max-height: 50px;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 1;
+}
+
+.logo-placeholder {
+    font-size: 12px;
+    color: #bbb;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    display: none;
+}
+
+.logo-placeholder.show {
+    display: block;
+}
+
+/* Header */
+.header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 32px;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.academic-year {
+    background: #fafafa;
+    padding: 12px 15px;
+    border-left: 3px solid #c41e3a;
+    font-size: 13px;
+    color: #555;
+}
+
+.academic-year p {
+    margin: 5px 0;
+}
+
+.academic-year strong {
+    color: #c41e3a;
+}
+
+/* Messages */
+#messageContainer {
+    margin-bottom: 25px;
+    display: none;
+}
+
+.message {
+    padding: 15px;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease-out;
+    border-left: 4px solid;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.message.success {
+    background-color: #fafafa;
+    color: #1a1a1a;
+    border-left-color: #c41e3a;
+}
+
+.message.error {
+    background-color: #fff0f0;
+    color: #c41e3a;
+    border-left-color: #c41e3a;
+}
+
+/* Success Message Expanded - Japanese style */
+.message.success-expanded {
+    background: white;
+    border: 2px solid #c41e3a;
+    border-radius: 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 8px 25px rgba(196, 30, 58, 0.15);
+    position: relative;
+}
+
+.message.success-expanded::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #c41e3a;
+}
+
+.success-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #c41e3a;
+    color: white;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    flex-shrink: 0;
+    animation: scaleCheck 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.success-text {
+    text-align: center;
+}
+
+.success-text strong {
+    display: block;
+    font-size: 18px;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+}
+
+.success-text p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.countdown-container {
+    text-align: center;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+.countdown-text {
+    display: inline;
+}
+
+.countdown-number {
+    display: inline-block;
+    min-width: 35px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #c41e3a;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Row */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-row.full-width {
+    grid-template-columns: 1fr;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Labels */
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.required {
+    color: #c41e3a;
+}
+
+/* Inputs */
+input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+input:focus {
+    outline: none;
+    border-color: #c41e3a;
+    background-color: white;
+    box-shadow: inset 0 0 0 1px rgba(196, 30, 58, 0.3);
+}
+
+input:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.3);
+}
+
+/* Button */
+.btn-submit {
+    padding: 14px 30px;
+    background-color: #c41e3a;
+    color: white;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.btn-submit:hover:not(:disabled) {
+    background-color: #8b161d;
+    box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+}
+
+.btn-submit:active:not(:disabled) {
+    background-color: #6b0f17;
+    transform: translateY(1px);
+}
+
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes fall {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes scaleCheck {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Confetti - Japanese color palette */
+.confetti {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .form-wrapper {
+        padding: 30px 20px;
+    }
+
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row.full-width {
+        grid-template-columns: 1fr;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    input {
+        padding: 11px;
+        font-size: 16px;
+    }
+
+    .btn-submit {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .message.success-expanded {
+        padding: 20px;
+    }
+
+    .logo {
+        max-width: 220px;
+        max-height: 45px;
+    }
+
+    .logo-section {
+        min-height: 45px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
